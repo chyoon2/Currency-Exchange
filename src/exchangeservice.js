@@ -2,7 +2,7 @@ export class ExchangeService {
   async getNewRate(amount, foreignCurrency) {
    
     if(isNaN(parseInt(amount))) {
-      return false;
+      return [false];
     } 
     
     try {
@@ -11,15 +11,20 @@ export class ExchangeService {
       
       if (response.ok && response.status == 200) {
         jsonifiedResponse = await response.json();
+
+        let rate = parseFloat(jsonifiedResponse.conversion_rates[foreignCurrency]);
+        let product = (rate * amount).toFixed(2);
+        return [ true, product,];
+
       } else {
-        jsonifiedResponse = false;
+        let stat= response.statusText;
+        return [false, stat];
       }
-      let rate = parseFloat(jsonifiedResponse.conversion_rates[foreignCurrency]);
-      let product = (rate * amount).toFixed(2);
-      return product;
+      
 
     } catch(error) {
-      return false;
+      console.error(error);
+      return [false, error];
     }
   }
 }

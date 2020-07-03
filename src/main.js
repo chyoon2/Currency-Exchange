@@ -5,16 +5,14 @@ import $ from 'jquery';
 import { ExchangeService } from './exchangeservice';
 
 function showExchange(response) { 
-  // if(response) {
-    console.log(response);
-
-    $('#output').text(`Your return is $${response}`);
+  if(response[0]) {
+    $('#output').text(`Your return is $${response[1]}`);
     $('#showErrors').text("");
-  // }
-  // else {
-  //   $('#showErrors').text("There was an error with your entry: ${Error.message}");
-  //   $('#output').text(""); 
-  // } 
+  }
+  else {
+    $('#showErrors').text(`There was a an error processing your request: ${response[1]}`);
+    $('#output').text(""); 
+  } 
 }
 
 $(document).ready(function(){
