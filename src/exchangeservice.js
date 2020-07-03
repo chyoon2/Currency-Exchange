@@ -8,27 +8,22 @@ export class ExchangeService {
       
       if (response.ok && response.status == 200) {
         jsonifiedResponse = await response.json();
-        
         for (let key in jsonifiedResponse.conversion_rates){
+          console.log(key);
           if(key === foreignCurrency) { 
             let product = this.math(jsonifiedResponse, foreignCurrency, amount);
-            console.log("hey");
+            return [ true, product,]; 
           }
         }
-          
-
-          return [ true, product,];
-        }
-
-      } else {
-        let stat= response.statusText;
-        return [false, stat];
+        throw new SyntaxError("That currency does not exist in our archive");
+      }
+      else {
+        throw Error(response.statusText); 
       }
       
-
     } catch(error) {
-      console.error(error);
-      return [false, error];
+      console.error(error.message);
+      return [false, error.message];
     }
   }
 

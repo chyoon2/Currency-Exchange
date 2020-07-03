@@ -11,7 +11,6 @@ function showExchange(response) {
     $('#output').text(`Your return is $${response[1]}`);
     $('#showError').text("");
     $('#showUserError').text("");
-
   }
   else {
     $('#showError').text(`There was a an error processing your request: ${response[1]}`);
@@ -22,11 +21,11 @@ function showExchange(response) {
 
 function userError(err) {
   if (err === 1) {
-    // $('#showUserError').empty();
+    $('#output').text("");
     $('#showUserError').text(`Error: Please enter a valid number`);
   }
   else {
-    // $('#showUserError').empty();
+    $('#output').text("");
     $('#showUserError').text(`Error: Only use alphabetical characters for currency`);
   }
 }
