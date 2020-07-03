@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 import $ from 'jquery';
 import { ExchangeService } from './exchangeservice';
+import { checkNumber } from './checkservice';
+import { checkString } from './checkstring';
 
 function showExchange(response) { 
   if(response[0]) {
@@ -19,7 +21,9 @@ $(document).ready(function(){
   $('#calculateExchange').click(function() {
     let amount = $('#usd').val();
     let foreignCurrency = $('#foreign-currency').val();
-    
+    checkNumber(amount);
+    checkString(foreignCurrency);
+
     (async () => {
       let exchangeService = new ExchangeService();
       const response = await exchangeService.getNewRate(amount, foreignCurrency);
