@@ -21,6 +21,10 @@ output: "Please enter only numeric values"
 input: "WON"
 output: N/A
 
+* Behavior: Program will convert string to uppercase.
+input: "usd"
+output: N/A
+
 * Behavior: Program will calculate the value of user-inputted number multiplied by the user-selected non-USD currency exchange rate.
 input: N/A
 output: N/A
