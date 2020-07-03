@@ -11,21 +11,23 @@ function showExchange(response) {
     $('#output').text(`Your return is $${response[1]}`);
     $('#showError').text("");
     $('#showUserError').text("");
-  }
-  if (response === 1) {
-    $('#output').text("");
-    $('#showUserError').text(`Error: Please enter a valid number`);
-  }
-  if (response === 2) {
-    $('#output').text("");
-    $('#showUserError').text(`Error: Only use alphabetical characters for currency`);
-  }
-  else {
+  } else if(!response[0]) {
     $('#showError').text(`There was a an error processing your request: ${response[1]}`);
     $('#showUserError').text("");
     $('#output').text(""); 
   } 
-}
+
+  if (response === 1) {
+    $('#output').text("");
+    $('#showError').text("");
+    $('#showUserError').text(`Error: Please enter a valid number`);
+  }
+  if (response === 2) {
+    $('#output').text("");
+    $('#showError').text("");
+    $('#showUserError').text(`Error: Only use alphabetical characters for currency`);
+  }
+} 
 
 $(document).ready(function(){
   $('#calculateExchange').click(function() {
@@ -39,7 +41,7 @@ $(document).ready(function(){
       return showExchange(1);
     }
     if(!upper){
-      showExchange(2);
+      return showExchange(2);
     }
     else {
       (async () => {

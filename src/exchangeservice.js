@@ -9,7 +9,6 @@ export class ExchangeService {
       if (response.ok && response.status == 200) {
         jsonifiedResponse = await response.json();
         for (let key in jsonifiedResponse.conversion_rates){
-          console.log(key);
           if(key === foreignCurrency) { 
             let product = this.math(jsonifiedResponse, foreignCurrency, amount);
             return [ true, product,]; 
@@ -22,7 +21,6 @@ export class ExchangeService {
       }
       
     } catch(error) {
-      console.error(error.message);
       return [false, error.message];
     }
   }
