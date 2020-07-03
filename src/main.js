@@ -2,7 +2,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 import $ from 'jquery';
-import { Exchange } from './backendexchange';
+import { ExchangeService } from './exchangeservice';
 
 function showExchange(response) { 
   if(response) {
@@ -19,11 +19,11 @@ $(document).ready(function(){
   $('#calculateExchange').click(function() {
     let currency = parseInt($('#usd').val());
     let foreignCurrency = $('#foreign-currency').val();
-    console.log(foreignCurrency)
-    // (async () => {
-    //   let Exchange = new Exchange();
-    //   const response = await Exchange.getNewRate();
-    //   showExchange(response);
-    // })();
+    
+    (async () => {
+      let exchangeService = new ExchangeService();
+      const response = await exchangeService.getNewRate(currency, foreignCurrency);
+      showExchange(response);
+    })();
   });
 });
