@@ -9,70 +9,37 @@ change file name in Name.js, change testname.js, name in package.json, webpack/h
 
 ## Specs:
 
-Behavior: Create a pet!
-input: "Name your pet: Johnny"
-output: "Here's Johnny!"
+Behavior: Program will accept a whole number.
+input: "10"
+output: N/A
 
-Behavior: Program will set a food level and decrease it by 1 every (300,000ms)
+Behavior: Program will not accept non-numeric values.
+input: "Money$10"
+output: "Please enter only numeric values"
+
+Behavior: Program will accept an input of a non-USD currency.
+input: "WON"
+output: N/A
+
+Behavior: Program will calculate the value of user-inputted number multiplied by the user-selected non-USD currency exchange rate.
 input: N/A
 output: N/A
 
-Behavior: Program will set a sleep level and decrease it by 1 every (600,000ms)
-input: N/A
-output: N/A
+Behavior: Program will call the API and request the key-value of the user-selected non-USD currency.
+Input: "WON"
+Output: N/A
 
-Behavior: Program will set a play level and decrease it by 1 every (15,000ms)
-input: N/A
-output: N/A
+Behavior: Program will return an error if the API call results in an error. 
+input: "10", "WON"
+output: "Unexpected error, Error 404"
 
----
+Behavior: Program will return a notification saying the currency does not exist if the user-selected currency doesn't exist in the API.
+input: "10" , "EDM"
+output: "EDM currency does not exist"
 
-Behavior: Program will increase food levels when pet is fed.
-input: "Feed Johnny"
-output: "Yum Yum"
-
-Behavior: Program will increase sleep levels when pet is put to sleep.
-input: "Put Johnny to bed"
-output: "Goodnight"
-
-Behavior: Program will increase play levels when pet is played with.
-input: "Play with Johnny"
-output: "That sure was fun"
-
----
-
-Behavior: The pet object will starve pet if hunger reaches 0. 
-input: N/A
-output: "Johnny has starved to death"
-
-Behavior: The pet object will die if play reach 0. 
-input: N/A
-output: "Johnny has died of lonliness"
-
-Behavior: The pet object die pet if sleep reaches 0. 
-input: N/A
-output: "Johnny has died of exhaustion"
-
----
-
-Behavior: Program will decrease sleep levels when pet is played with (play levels are increased).
-input: "Play with Johnny"
-output: N/A  **Sleep levels increase"
-
-
-
-
--create a game object (constructor) -players 
-
-creature 
--food
--play
--sleeplevels
-
-setinterval function
-
-function playwith: increases food/attention/sleep
-
+Behavior: Program will return an output of the calculated currency exchage
+Input: "10" , "AED"
+Output: "36.7 AED
 
 ## Setup/Installation Requirements 
 
