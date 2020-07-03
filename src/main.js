@@ -12,22 +12,19 @@ function showExchange(response) {
     $('#showError').text("");
     $('#showUserError').text("");
   }
+  if (response === 1) {
+    $('#output').text("");
+    $('#showUserError').text(`Error: Please enter a valid number`);
+  }
+  if (response === 2) {
+    $('#output').text("");
+    $('#showUserError').text(`Error: Only use alphabetical characters for currency`);
+  }
   else {
     $('#showError').text(`There was a an error processing your request: ${response[1]}`);
     $('#showUserError').text("");
     $('#output').text(""); 
   } 
-}
-
-function userError(err) {
-  if (err === 1) {
-    $('#output').text("");
-    $('#showUserError').text(`Error: Please enter a valid number`);
-  }
-  else {
-    $('#output').text("");
-    $('#showUserError').text(`Error: Only use alphabetical characters for currency`);
-  }
 }
 
 $(document).ready(function(){
@@ -36,14 +33,13 @@ $(document).ready(function(){
     let foreignCurrency = $('#foreign-currency').val();
     $('#usd').val("");
     $('#foreign-currency').val("");
-
     let upper = checkString(foreignCurrency);
 
     if(checkNumber(amount)){ 
-      return userError(1);
+      return showExchange(1);
     }
     if(!upper){
-      userError(2);
+      showExchange(2);
     }
     else {
       (async () => {
