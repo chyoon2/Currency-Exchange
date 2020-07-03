@@ -1,5 +1,12 @@
 export class ExchangeService {
   async getNewRate(amount, foreignCurrency) {
+   
+    if(isNaN(amount)) {
+      return false;
+    } 
+
+    let amountInt = parseInt(amount);
+    
     try {
       let response = await fetch(`https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/latest/USD`);
       let jsonifiedResponse;
@@ -9,9 +16,10 @@ export class ExchangeService {
       } else {
         jsonifiedResponse = false;
       }
-      let result = jsonifiedResponse.conversion_rates[foreignCurrency];
-      console.log(result);
-      return jsonifiedResponse;
+      let rate = parseInt(jsonifiedResponse.conversion_rates[foreignCurrency]);
+      let product = rate * amountInt;
+      return product;
+      
     } catch(error) {
       return false;
     }

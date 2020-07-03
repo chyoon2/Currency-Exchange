@@ -17,13 +17,13 @@ function showExchange(response) {
 
 $(document).ready(function(){
   $('#calculateExchange').click(function() {
-    let currency = parseInt($('#usd').val());
+    let amount = $('#usd').val();
     let foreignCurrency = $('#foreign-currency').val();
     
     (async () => {
       let exchangeService = new ExchangeService();
-      const response = await exchangeService.getNewRate(currency, foreignCurrency);
+      const response = await exchangeService.getNewRate(amount, foreignCurrency);
       showExchange(response);
-    })();
+    })(); 
   });
 });
