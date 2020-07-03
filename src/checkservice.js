@@ -1,5 +1,8 @@
-export function checkNumber(amount, foreignCurrency) {
+export function checkNumber(amount) {
   if(isNaN(parseInt(amount))) {
-    return [false];
+    return false;
   } 
+  else {
+    return true;
+  }
 } 

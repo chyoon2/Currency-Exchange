@@ -17,17 +17,34 @@ function showExchange(response) {
   } 
 }
 
+function userError(err) {
+  if (err === 1) {
+    $('#showErrors').text(`Error: Please enter a valid number`);
+  }
+  else {
+    $('#showErrors').text(`Error: Only use alphabetical characters for currency`);
+  }
+}
+
 $(document).ready(function(){
   $('#calculateExchange').click(function() {
     let amount = $('#usd').val();
     let foreignCurrency = $('#foreign-currency').val();
     checkNumber(amount);
-    checkString(foreignCurrency);
+    let upper = checkString(foreignCurrency);
 
-    (async () => {
-      let exchangeService = new ExchangeService();
-      const response = await exchangeService.getNewRate(amount, foreignCurrency);
-      showExchange(response);
-    })(); 
+    if(!checkNumber(amount)){ 
+      userError(1);
+    }
+    else if(!upper){
+      userError(2);
+    }
+    else {
+      (async () => {
+        let exchangeService = new ExchangeService();
+        const response = await exchangeService.getNewRate(amount, upper);
+        showExchange(response);
+      })(); 
+    }
   });
 });
