@@ -9,23 +9,23 @@ change file name in Name.js, change testname.js, name in package.json, webpack/h
 
 ## Specs:
 
-Behavior: Program will accept a whole number.
+* Behavior: Program will accept a whole number.
 input: "10"
 output: N/A
 
-Behavior: Program will not accept non-numeric values.
+* Behavior: Program will not accept non-numeric values.
 input: "Money$10"
 output: "Please enter only numeric values"
 
-Behavior: Program will accept an input of a non-USD currency.
+* Behavior: Program will accept an input of a non-USD currency.
 input: "WON"
 output: N/A
 
-Behavior: Program will calculate the value of user-inputted number multiplied by the user-selected non-USD currency exchange rate.
+* Behavior: Program will calculate the value of user-inputted number multiplied by the user-selected non-USD currency exchange rate.
 input: N/A
 output: N/A
 
-Behavior: Program will call the API and request the key-value of the user-selected non-USD currency.
+* Behavior: Program will call the API and request the key-value of the user-selected non-USD currency.
 Input: "WON"
 Output: N/A
 
